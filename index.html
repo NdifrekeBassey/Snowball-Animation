@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowfall with Clouds</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB, #4682B4);
+            height: 100vh;
+            position: relative;
+        }
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @keyframes moveClouds {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(100vw);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createCloud() {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            
+            let size = Math.random() * 100 + 50;
+            let topPos = Math.random() * 50;
+            let duration = Math.random() * 30 + 20;
+            
+            cloud.style.width = `${size}px`;
+            cloud.style.height = `${size / 2}px`;
+            cloud.style.top = `${topPos}vh`;
+            cloud.style.left = `-100px`;
+            cloud.style.position = 'absolute';
+            cloud.style.animation = `moveClouds ${duration}s linear infinite`;
+            
+            document.body.appendChild(cloud);
+            
+            setTimeout(() => {
+                cloud.remove();
+            }, duration * 1000);
+        }
+
+        function generateClouds() {
+            setInterval(createCloud, 3000);
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            
+            let size = Math.random() * 10 + 5;
+            let left = Math.random() * window.innerWidth;
+            let duration = Math.random() * 3 + 2;
+            let opacity = Math.random();
+            
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${left}px`;
+            snowflake.style.animationDuration = `${duration}s`;
+            snowflake.style.opacity = opacity;
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        function generateSnowflakes() {
+            setInterval(createSnowflake, 100);
+        }
+
+        generateClouds();
+        generateSnowflakes();
+    </script>
+</body>
+</html>
