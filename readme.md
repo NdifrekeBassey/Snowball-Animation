@@ -8,7 +8,7 @@ This project, developed by [**Eagletech**]([Github](https://github.com/NdifrekeB
 - **❇️ Responsive Design**: Works seamlessly on different screen sizes.
 - **🎥 Smooth Animations**: Snowflakes and clouds move smoothly for an immersive experience.
 
-## Technologies Used 🛠️
+## Technologies Used
 - **HTML**: Structure of the webpage.
 - **CSS**: Styling and animations for snowflakes and clouds.
 - **JavaScript**: Dynamic creation of snowflakes and cloud movement.
